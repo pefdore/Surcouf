@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>La Journée des Voisins — Rue Surcouf, Rennes · Vendredi 29 mai 2026</title>
+  <meta name="description" content="La Journée des Voisins de la rue Surcouf à Rennes : histoire de la rue, programme de l'après-midi, apéro et banquet du soir, inscriptions et organisation collaborative. Vendredi 29 mai 2026.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚓</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700;9..144,900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- ══════════════ NAV ══════════════ -->
+  <header class="nav" id="nav">
+    <div class="nav-inner container">
+      <a href="#hero" class="brand">
+        <span class="brand-mark">⚓</span>
+        <span class="brand-text">Rue&nbsp;Surcouf<br><small>Journée des Voisins</small></span>
+      </a>
+      <nav class="nav-links">
+        <a href="#histoire">L'histoire</a>
+        <a href="#programme">Programme</a>
+        <a href="#organisation">J'organise</a>
+        <a href="#venir">J'viens&nbsp;!</a>
+      </nav>
+      <a href="#venir" class="btn btn-gold btn-sm nav-cta">Je m'inscris</a>
+      <button class="burger" id="burger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="progress-bar" id="progressBar"></div>
+  </header>
+
+  <!-- ══════════════ HERO ══════════════ -->
+  <section class="hero" id="hero">
+    <div class="hero-bg">
+      <div class="waves" aria-hidden="true">
+        <svg viewBox="0 0 1440 320" preserveAspectRatio="none"><path class="wave w1" d="M0,160L80,170.7C160,181,320,203,480,208C640,213,800,203,960,181.3C1120,160,1280,128,1360,112L1440,96V320H0Z"></path></svg>
+        <svg viewBox="0 0 1440 320" preserveAspectRatio="none"><path class="wave w2" d="M0,224L120,213.3C240,203,480,181,720,186.7C960,192,1200,224,1320,240L1440,256V320H0Z"></path></svg>
+      </div>
+      <div class="compass" aria-hidden="true">✦</div>
+      <div class="ship-deco" aria-hidden="true">⛵</div>
+    </div>
+
+    <div class="container hero-content">
+      <div class="hero-badge reveal">
+        <span class="pulse-dot"></span>
+        Fête des Voisins · édition rue Surcouf
+      </div>
+      <h1 class="hero-title reveal">
+        Une rue, une équipe,<br><em>une fête</em>
+      </h1>
+      <p class="hero-sub reveal">
+        Toute la journée du <strong>vendredi 29&nbsp;mai 2026</strong>, la rue Surcouf hisse ses couleurs :
+        jeux l'après-midi, apéro au coucher du soleil et grand banquet entre voisins.
+      </p>
+
+      <div class="countdown reveal" id="countdown" aria-label="Compte à rebours">
+        <div class="cd-cell"><span class="cd-num" id="cdDays">—</span><span class="cd-label">jours</span></div>
+        <div class="cd-sep">:</div>
+        <div class="cd-cell"><span class="cd-num" id="cdHours">—</span><span class="cd-label">heures</span></div>
+        <div class="cd-sep">:</div>
+        <div class="cd-cell"><span class="cd-num" id="cdMin">—</span><span class="cd-label">minutes</span></div>
+        <div class="cd-sep">:</div>
+        <div class="cd-cell"><span class="cd-num" id="cdSec">—</span><span class="cd-label">secondes</span></div>
+      </div>
+
+      <div class="hero-cta reveal">
+        <a href="#venir" class="btn btn-gold btn-lg">Je réponds présent·e</a>
+        <a href="#programme" class="btn btn-ghost btn-lg">Voir le programme</a>
+      </div>
+
+      <div class="hero-stats reveal">
+        <div class="stat"><span id="statInscrits">0</span><label>voisins inscrits</label></div>
+        <div class="stat"><span id="statTaches">0/0</span><label>missions prises</label></div>
+        <div class="stat"><span>1888</span><label>année de la rue</label></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ HISTOIRE ══════════════ -->
+  <section class="section section-histoire" id="histoire">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="kicker">Chapitre I</span>
+        <h2>Une rue qui porte le nom d'un <em>roi des corsaires</em></h2>
+        <p class="section-lead">
+          Avant de mettre les tables, un petit détour par le passé — parce qu'on ne s'appelle
+          pas « Surcouf » par hasard, et que notre rue a une histoire à raconter.
+        </p>
+      </div>
+
+      <div class="histoire-grid">
+        <article class="story-card reveal">
+          <div class="story-num">1773</div>
+          <h3>Le Tigre des Sept Mers voit le jour</h3>
+          <p>
+            <strong>Robert Surcouf</strong> naît le 12 décembre 1773 à Saint-Malo, dans une famille
+            d'armateurs. Mousse à 13 ans, corsaire à 20, il devient le plus célèbre des marins
+            bretons : surnommé <em>le Tigre des Sept Mers</em>, il captura plus de 40 navires —
+            dont le prestigieux <em>Kent</em> en 1800 — et fut couronné <em>roi des corsaires</em>.
+          </p>
+        </article>
+
+        <article class="story-card reveal">
+          <div class="story-num">1888</div>
+          <h3>Naissance officielle de la rue</h3>
+          <p>
+            Notre rue doit son nom à une <strong>délibération du Conseil municipal de Rennes
+            du 15 février 1888</strong>. Le conseil choisit de rendre hommage au corsaire malouin
+            (1773–1827), en citant aux côtés des grandes figures bretonnes : Duguay-Trouin,
+            Jacques Cartier, Laennec… et Surcouf.
+          </p>
+        </article>
+
+        <article class="story-card reveal">
+          <div class="story-num">1880</div>
+          <h3>Le lotissement qui a dessiné le quartier</h3>
+          <p>
+            La rue Surcouf est un axe du <strong>lotissement Hay-Ferrière</strong>, tracé vers 1880
+            entre la Vilaine et les anciennes prairies de l'Arsenal. La ville s'étend vers l'ouest :
+            petites maisons de rapport, ateliers et jardins ouvriers se partagent les nouvelles parcelles.
+            La rue est prolongée en direction de la rue de Redon, puis <strong>classée dans la voirie
+            urbaine en 1926</strong>.
+          </p>
+        </article>
+
+        <article class="story-card reveal">
+          <div class="story-num">Auj.</div>
+          <h3>Un quartier, une âme de village</h3>
+          <p>
+            Entre le quai de la Prévalaye et la rue Alexandre-Duval, dans le quartier
+            <strong>Cleunay – Arsenal – Redon</strong>, la rue Surcouf garde un esprit de village :
+            on se salue, on se connaît, les enfants y grandissent ensemble. C'est exactement
+            cet esprit qu'on célèbre le 29 mai.
+          </p>
+        </article>
+      </div>
+
+      <aside class="anecdote reveal">
+        <span class="anecdote-icon">🏴‍☠️</span>
+        <div>
+          <h4>La pépite à ressortir à l'apéro</h4>
+          <p>
+            Quand un Anglais lui lançait : « Les Français se battent pour de l'argent, pas pour la gloire »,
+            Surcouf aurait répondu : <em>« On se bat d'abord pour sa gloire, messieurs. Quant à l'argent,
+            on l'accepte par bravade. »</em> La classe. À déguster sans modération entre deux toasts.
+          </p>
+        </div>
+      </aside>
+
+      <p class="sources reveal">
+        Sources : WikiRennes (dossier « Rue Surcouf », délibérations municipales, Archives de Rennes) ·
+        Inventaire général du patrimoine culturel, dossier IA35024032 (Gertrude / patrimoine.bzh) ·
+        fetedesvoisins.fr pour la date nationale.
+      </p>
+    </div>
+  </section>
+
+  <!-- ══════════════ PROGRAMME ══════════════ -->
+  <section class="section section-programme" id="programme">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="kicker">Chapitre II</span>
+        <h2>Le programme de la <em>journée</em></h2>
+        <p class="section-lead">
+          Du café du matin aux dernières chansons, voici le déroulé du <strong>vendredi 29 mai 2026</strong>.
+          La rue est réservée aux piétons dès 13h — on vit ensemble, on mange ensemble, on range ensemble.
+        </p>
+      </div>
+
+      <div class="prog-track">
+        <!-- Après-midi -->
+        <div class="prog-block reveal">
+          <div class="prog-block-head">
+            <h3>Après-midi <span>· dès 14h00</span></h3>
+            <p>Jeux, rencontres et ateliers — ouvert à tous, y compris aux voisins des rues alentour !</p>
+          </div>
+          <ol class="timeline">
+            <li class="tl-item reveal">
+              <time>14h00</time>
+              <div class="tl-body">
+                <h4>Levée de drapeau &amp; café d'accueil</h4>
+                <p>On installe les tables au milieu de la rue, café, thé et crêpes offerts. Chacun arrive avec son sourire (et ses chaises si possible).</p>
+                <div class="tl-tags"><span class="tag">Gratuit</span><span class="tag">Tous âges</span></div>
+              </div>
+            </li>
+            <li class="tl-item reveal">
+              <time>15h00</time>
+              <div class="tl-body">
+                <h4>Grandes jeux de la rue</h4>
+                <p>Mölkky, palets, pétanque à la mêlée, jeu du pendu géant et tournoi de ping-pong improvisé.</p>
+                <div class="tl-tags"><span class="tag">Tournoi</span><span class="tag">Prise 1</span></div>
+              </div>
+            </li>
+            <li class="tl-item reveal">
+              <time>16h30</time>
+              <div class="tl-body">
+                <h4>Chasse au trésor « Sur la piste du Renard »</h4>
+                <p>Par équipes, petits et grands suivent les indices cachés dans la rue pour retrouver le trésor du corsaire. Récompense : un goûter géant.</p>
+                <div class="tl-tags"><span class="tag">Enfants</span><span class="tag">Équipes</span></div>
+              </div>
+            </li>
+            <li class="tl-item reveal">
+              <time>17h30</time>
+              <div class="tl-body">
+                <h4>Sieste douce &amp; préparation du banquet</h4>
+                <p>On arrache les nappes, on sort les guirlandes, chacun pose son plat sur la table des contributions.</p>
+                <div class="tl-tags"><span class="tag">Logistique</span></div>
+              </div>
+            </li>
+          </ol>
+        </div>
+
+        <!-- Apéro -->
+        <div class="prog-block prog-block-accent reveal">
+          <div class="prog-block-head">
+            <h3>Apéro des voisins <span>· 18h30</span></h3>
+            <p>Le moment phare : on lève ensemble un verre à la santé des 137 ans de la rue.</p>
+          </div>
+          <ol class="timeline">
+            <li class="tl-item reveal">
+              <time>18h30</time>
+              <div class="tl-body">
+                <h4>Grand toast collectif</h4>
+                <p>Chacun amène une boisson et quelque chose à grignoter. Kir Breton, jus de fruits et sans-alcool pour les enfants.</p>
+                <div class="tl-tags"><span class="tag">Chacun rapporte</span><span class="tag">Zéro-plastique</span></div>
+              </div>
+            </li>
+            <li class="tl-item reveal">
+              <time>19h15</time>
+              <div class="tl-body">
+                <h4>Photo officielle de la rue</h4>
+                <p>Le grand portrait groupé du bout au bout de la rue Surcouf, à republier fièrement dans les boîtes aux lettres.</p>
+                <div class="tl-tags"><span class="tag">Souvenir</span></div>
+              </div>
+            </li>
+          </ol>
+        </div>
+
+        <!-- Banquet -->
+        <div class="prog-block prog-block-dim reveal">
+          <div class="prog-block-head">
+            <h3>Banquet du soir <span>· 20h00</span></h3>
+            <p>La grande table unique au milieu de la rue. Chacun apporte un plat et sa vaisselle.</p>
+          </div>
+          <ol class="timeline">
+            <li class="tl-item reveal">
+              <time>20h00</time>
+              <div class="tl-body">
+                <h4>Table unique &amp; faire partagé</h4>
+                <p>Un plat salé ou sucré par foyer, spécialités bretonnes bienvenues : far, kouign-amann, galettes-saucisses… La table des vins et softs est commune.</p>
+                <div class="tl-tags"><span class="tag">Auberge espagnole</span><span class="tag">Bio &amp; local</span></div>
+              </div>
+            </li>
+            <li class="tl-item reveal">
+              <time>21h30</time>
+              <div class="tl-body">
+                <h4>Concert &amp; chansons à la bougie</h4>
+                <p>Micro ouvert, instruments bienvenus, chansons de marins en option (clin d'œil au patron de la rue). Ambiance guirlandes lumineuses.</p>
+                <div class="tl-tags"><span class="tag">Micro ouvert</span><span class="tag">Convivial</span></div>
+              </div>
+            </li>
+            <li class="tl-item reveal">
+              <time>23h00</time>
+              <div class="tl-body">
+                <h4>Grand rangement collectif &amp; merci !</h4>
+                <p>Beaucoup de mains = peu de travail : on plie les tables, on trie, on s'embrasse et on se dit « à l'année prochaine ». Chacun ramène ses plats et sa vaisselle.</p>
+                <div class="tl-tags"><span class="tag">Collectif</span><span class="tag">15 minutes</span></div>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ ORGANISATION ══════════════ -->
+  <section class="section section-organisation" id="organisation">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="kicker">Chapitre III</span>
+        <h2>Qui organise <em>quoi&nbsp;?</em></h2>
+        <p class="section-lead">
+          Pas de chef, pas de service après-vente : la fête fonctionne en équipage. Chaque mission
+          ci-dessous peut être revendiquée par <strong>une personne ou un foyer</strong> — cliquez sur
+          « Je m'en charge&nbsp;! » et votre nom s'affiche. La sauvegarde se fait automatiquement
+          sur votre appareil.
+        </p>
+      </div>
+
+      <div class="board" id="board"><!-- rempli par app.js --></div>
+
+      <div class="board-actions reveal">
+        <button class="btn btn-ghost" id="btnResetBoard">Réinitialiser le tableau</button>
+        <button class="btn btn-ghost" id="btnExport">Exporter la liste (.csv)</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ VENIR ══════════════ -->
+  <section class="section section-venir" id="venir">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="kicker">Chapitre IV</span>
+        <h2>Qui vient&nbsp;? <em>Répondez présent·e</em></h2>
+        <p class="section-lead">
+          Pour prévoir les tables, les verres et le kig ha far, merci de remplir ce petit formulaire.
+          Vous pouvez modifier ou retirer votre réponse à tout moment.
+        </p>
+      </div>
+
+      <div class="venir-grid">
+        <form class="rsvp-card reveal" id="rsvpForm" novalidate>
+          <div class="field">
+            <label for="fNom">Prénom &amp; nom / foyer *</label>
+            <input type="text" id="fNom" required placeholder="Ex. Famille Le Goff, n° 12">
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="fAdultes">Adultes</label>
+              <input type="number" id="fAdultes" min="1" max="20" value="2">
+            </div>
+            <div class="field">
+              <label for="fEnfants">Enfants (-12 ans)</label>
+              <input type="number" id="fEnfants" min="0" max="20" value="0">
+            </div>
+          </div>
+          <div class="field">
+            <span class="label-block">Je serai présent·e&nbsp;:</span>
+            <div class="choices">
+              <label class="choice"><input type="checkbox" name="moments" value="Après-midi" checked><span>☀️ Après-midi</span></label>
+              <label class="choice"><input type="checkbox" name="moments" value="Apéro" checked><span>🍹 Apéro</span></label>
+              <label class="choice"><input type="checkbox" name="moments" value="Banquet" checked><span>🍽️ Banquet</span></label>
+            </div>
+          </div>
+          <div class="field">
+            <label for="fApport">Ce que j'apporte (plat, boisson, table, chaises, guirlandes, sono…)</label>
+            <input type="text" id="fApport" placeholder="Ex. un far maison + 4 chaises">
+          </div>
+          <div class="field">
+            <label for="fMsg">Un mot pour les voisins (optionnel)</label>
+            <textarea id="fMsg" rows="3" placeholder="Un petit bonjour, une idée, une chanson à partager…"></textarea>
+          </div>
+          <button type="submit" class="btn btn-gold btn-lg btn-block">Je m'inscris ⚓</button>
+          <p class="form-note">Vos réponses restent sur votre appareil (stockage local). Pensez à transmettre le lien du site à vos voisins&nbsp;!</p>
+        </form>
+
+        <div class="rsvp-list-wrap reveal">
+          <div class="rsvp-list-head">
+            <h3 id="rsvpCount">— voisin(s) inscrit(s)</h3>
+            <button class="btn btn-ghost btn-sm" id="btnPrint">Imprimer / PDF</button>
+          </div>
+          <ul class="rsvp-list" id="rsvpList"><!-- rempli par app.js --></ul>
+          <p class="empty-state" id="rsvpEmpty">Personne pour l'instant… Soyez le premier à hisser les voiles&nbsp;!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ FOOTER ══════════════ -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>
+        <p class="footer-title">⚓ Journée des Voisins · Rue Surcouf</p>
+        <p>Rue Surcouf, 35000 Rennes — quartier Cleunay / Arsenal / Redon</p>
+        <p>Vendredi 29 mai 2026 · dès 14h00</p>
+      </div>
+      <div>
+        <p class="footer-title">Crédits &amp; sources</p>
+        <p>Historique : WikiRennes · Archives de Rennes · Inventaire général du patrimoine culturel (patrimoine.bzh).</p>
+        <p>Date calée sur la Fête des Voisins nationale — fetedesvoisins.fr.</p>
+      </div>
+    </div>
+    <p class="footer-love">Fait avec ❤️ par les voisins, pour les voisins.</p>
+  </footer>
+
+  <div class="toast" id="toast" role="status"></div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
