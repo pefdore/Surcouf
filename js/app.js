@@ -33,6 +33,8 @@ function save(key, data) {
   try { localStorage.setItem(key, JSON.stringify(data)); } catch { /* quota */ }
 }
 
+const ROMAN = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII", "XIII"];
+
 function initials(name) {
   return (name.trim().split(/\s+/).map(w => w[0]).join("") || "?").slice(0, 2).toUpperCase();
 }
@@ -62,7 +64,7 @@ navLinks.addEventListener("click", (e) => {
 
 window.addEventListener("scroll", () => {
   const sc = window.scrollY;
-  nav.style.boxShadow = sc > 20 ? "0 10px 30px -12px rgba(0,0,0,.5)" : "none";
+  nav.classList.toggle("scrolled", sc > 20);
   const h = document.documentElement.scrollHeight - window.innerHeight;
   progressBar.style.width = (h > 0 ? (sc / h) * 100 : 0) + "%";
 }, { passive: true });
@@ -105,9 +107,9 @@ function renderRsvps() {
     li.className = "rsvp-item";
     li.style.animationDelay = (i * 0.06) + "s";
     const moments = r.moments.map(m => ({
-      "Après-midi": "☀️ après-midi",
-      "Apéro": "🍹 apéro",
-      "Banquet": "🍽️ banquet"
+      "Après-midi": "après-midi",
+      "Apéro": "apéro",
+      "Banquet": "banquet"
     }[m] || m)).join(" · ") || "présence à confirmer";
     li.innerHTML = `
       <div class="rsvp-item-top">
@@ -116,7 +118,7 @@ function renderRsvps() {
         <button class="rsvp-del" title="Retirer mon inscription" data-id="${r.id}">✕</button>
       </div>
       <div class="rsvp-item-meta">${r.adultes} adulte(s)${r.enfants ? " · " + r.enfants + " enfant(s)" : ""} — ${moments}</div>
-      ${r.apport ? `<div class="rsvp-item-apport">${escapeHtml(r.apport)}</div>` : ""}
+      ${r.apport ? `<div class="rsvp-item-apport"><span>Apport</span>${escapeHtml(r.apport)}</div>` : ""}
       ${r.msg ? `<div class="rsvp-item-msg">${escapeHtml(r.msg)}</div>` : ""}
     `;
     list.appendChild(li);
@@ -142,7 +144,7 @@ $("#rsvpList").addEventListener("click", (e) => {
     rsvps = rsvps.filter(x => x.id !== id);
     save(STORE_RSVP, rsvps);
     renderRsvps();
-    toast("Inscription retirée. À l'année prochaine peut-être 🌊");
+    toast("Inscription retirée — à l'année prochaine peut-être.");
   }
 });
 
@@ -150,7 +152,7 @@ $("#rsvpForm").addEventListener("submit", (e) => {
   e.preventDefault();
   const nom = $("#fNom").value.trim();
   if (!nom) {
-    toast("Il nous faut un prénom ou un nom de foyer pour embarquer ⚓");
+    toast("Indiquez un prénom ou un nom de foyer pour vous inscrire.");
     $("#fNom").focus();
     return;
   }
@@ -170,7 +172,7 @@ $("#rsvpForm").addEventListener("submit", (e) => {
     toast(`<b>${escapeHtml(entry.nom)}</b>, votre inscription a été mise à jour. Merci !`);
   } else {
     rsvps.push(entry);
-    toast(`Bienvenue à bord, <b>${escapeHtml(entry.nom)}</b> ! On vous attend le 29 mai ⚓`);
+    toast(`Merci, <b>${escapeHtml(entry.nom)}</b> — on vous attend le vendredi 29 mai.`);
   }
   save(STORE_RSVP, rsvps);
   renderRsvps();
@@ -183,19 +185,19 @@ $("#btnPrint").addEventListener("click", () => window.print());
 
 /* ─────────── Tableau « qui organise quoi » ─────────── */
 const TASKS = [
-  { icon: "🔔", title: "Sonner aux portes", desc: "Distribuer les flyers dans toutes les boîtes aux lettres de la rue (2 semaines avant)." },
-  { icon: "🏛️", title: "Autorisation mairie", desc: "Demander la réservation piétonne de la rue à Rennes Ville & Métropole (1 mois avant)." },
-  { icon: "🪑", title: "Tables & chaises", desc: "Recenser et monter les tables pliantes et bancs le matin du 29." },
-  { icon: "🎈", title: "Déco & guirlandes", desc: "Fanions, nappes, guirlandes lumineuses et dénomination des rues en corsaire." },
-  { icon: "☕", title: "Café d'accueil", desc: "Urnes de café, thé, jus et crêpes pour l'ouverture à 14h." },
-  { icon: "🥏", title: "Jeux de l'après-midi", desc: "Mölkky, palets, pétanque, ping-pong et gestion du tableau des scores." },
-  { icon: "🏴‍☠️", title: "Chasse au trésor « Le Renard »", desc: "Préparer les indices, cacher le trésor et encadrer les équipes d'enfants." },
-  { icon: "🍹", title: "Bar de l'apéro", desc: "Table des boissons : kir breton, softs, glaçons, gobelets réutilisables." },
-  { icon: "🎤", title: "Sono & micro ouvert", desc: "Enceinte, micro sans fil et playlist de marine pour les chansons de marins." },
-  { icon: "🎸", title: "Musiciens", desc: "Brancher un instrument pour le concert de 21h30 et embarquer les voisins." },
-  { icon: "📸", title: "Photos & vidéo", desc: "Shooter la photo officielle de la rue et immortaliser la journée." },
-  { icon: "♻️", title: "Tri & rangement", desc: "Sacs de tri, point de propreté et grand rangement collectif à 23h." },
-  { icon: "🚸", title: "Sécurité douce", desc: "Circulation aux extrémités de la rue, assistance aux personnes âgées et aux enfants." }
+  { title: "Sonner aux portes", desc: "Distribuer les flyers dans toutes les boîtes aux lettres de la rue (2 semaines avant)." },
+  { title: "Autorisation mairie", desc: "Demander la réservation piétonne de la rue à Rennes Ville & Métropole (1 mois avant)." },
+  { title: "Tables & chaises", desc: "Recenser et monter les tables pliantes et bancs le matin du 29." },
+  { title: "Déco & guirlandes", desc: "Fanions, nappes, guirlandes lumineuses et dénomination des rues en corsaire." },
+  { title: "Café d'accueil", desc: "Urnes de café, thé, jus et crêpes pour l'ouverture à 14h." },
+  { title: "Jeux de l'après-midi", desc: "Mölkky, palets, pétanque, ping-pong et gestion du tableau des scores." },
+  { title: "Chasse au trésor « Le Renard »", desc: "Préparer les indices, cacher le trésor et encadrer les équipes d'enfants." },
+  { title: "Bar de l'apéro", desc: "Table des boissons : kir breton, softs, glaçons, gobelets réutilisables." },
+  { title: "Sono & micro ouvert", desc: "Enceinte, micro sans fil et playlist de marine pour les chansons de marins." },
+  { title: "Musiciens", desc: "Brancher un instrument pour le concert de 21h30 et embarquer les voisins." },
+  { title: "Photos & vidéo", desc: "Shooter la photo officielle de la rue et immortaliser la journée." },
+  { title: "Tri & rangement", desc: "Sacs de tri, point de propreté et grand rangement collectif à 23h." },
+  { title: "Sécurité douce", desc: "Circulation aux extrémités de la rue, assistance aux personnes âgées et aux enfants." }
 ];
 
 let board = load(STORE_BOARD, {});
@@ -212,7 +214,7 @@ function renderBoard() {
     card.style.animationDelay = (i * 0.05) + "s";
     card.innerHTML = `
       <div class="task-top">
-        <span class="task-icon">${t.icon}</span>
+        <span class="task-num">${ROMAN[i] ?? i + 1}</span>
         <h4>${t.title}</h4>
       </div>
       <p>${t.desc}</p>
@@ -239,7 +241,7 @@ boardEl.addEventListener("click", (e) => {
     board[task] = nom.trim();
     save(STORE_BOARD, board);
     renderBoard();
-    toast(`Merci <b>${escapeHtml(nom.trim())}</b> ! « ${escapeHtml(task)} » vous revient ⚓`);
+    toast(`Merci <b>${escapeHtml(nom.trim())}</b> — « ${escapeHtml(task)} » vous revient.`);
   }
 });
 
@@ -248,7 +250,7 @@ $("#btnResetBoard").addEventListener("click", () => {
     board = {};
     save(STORE_BOARD, board);
     renderBoard();
-    toast("Tableau réinitialisé. À vos marques pour l'équipage !");
+    toast("Tableau réinitialisé.");
   }
 });
 
@@ -267,7 +269,7 @@ $("#btnExport").addEventListener("click", () => {
   a.download = "journee-voisins-rue-surcouf.csv";
   a.click();
   URL.revokeObjectURL(a.href);
-  toast("Liste exportée en CSV — à ouvrir dans Excel ou LibreOffice 📄");
+  toast("Liste exportée en CSV — à ouvrir dans Excel ou LibreOffice.");
 });
 
 /* ─────────── Init ─────────── */
