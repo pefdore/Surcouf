@@ -18,5 +18,5 @@
    ══════════════════════════════════════════════════════════════ */
 
 window.SURCOUF_CONFIG = {
-  NEON_URL: ""
+  NEON_URL: "postgresql://voisin_app:6nWrs8SquHmn8RAyh0MnbDzp@ep-withered-smoke-be144c8n-pooler.c-9.us-east-2.aws.neon.tech/neondb?sslmode=require"
 };
