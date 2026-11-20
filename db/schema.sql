@@ -3,7 +3,7 @@
 -- Schéma PostgreSQL / Neon — à exécuter dans le SQL Editor Neon
 -- (https://console.neon.tech → ton projet → SQL Editor)
 --
--- ATTENTION : remplace MON_MOT_DE_PASSE par un mot de passe solide
+-- ATTENTION : remplace 6nWrs8SquHmn8RAyh0MnbDzp par un mot de passe solide
 -- avant d'exécuter, et garde-le pour js/config.js.
 -- ══════════════════════════════════════════════════════════════
 
@@ -51,11 +51,11 @@ ON CONFLICT (title) DO NOTHING;
 DO $do$
 BEGIN
   IF NOT EXISTS (SELECT FROM pg_catalog.pg_roles WHERE rolname = 'voisin_app') THEN
-    CREATE ROLE voisin_app LOGIN PASSWORD 'MON_MOT_DE_PASSE';
+    CREATE ROLE voisin_app LOGIN PASSWORD '6nWrs8SquHmn8RAyh0MnbDzp';
   END IF;
 END
 $do$;
-ALTER ROLE voisin_app LOGIN PASSWORD 'MON_MOT_DE_PASSE';
+ALTER ROLE voisin_app LOGIN PASSWORD '6nWrs8SquHmn8RAyh0MnbDzp';
 GRANT USAGE ON SCHEMA public TO voisin_app;
 GRANT SELECT, INSERT, UPDATE ON rsvps    TO voisin_app;
 GRANT USAGE ON ALL SEQUENCES IN SCHEMA public TO voisin_app;
