@@ -6,7 +6,7 @@
 
 "use strict";
 
-const EVENT_DATE = new Date("2026-05-29T14:00:00+02:00");
+const EVENT_DATE = new Date("2027-05-28T14:00:00+02:00");
 const STORE_RSVP = "surcouf-rsvp-v1";
 const STORE_BOARD = "surcouf-board-v1";
 
@@ -172,7 +172,7 @@ $("#rsvpForm").addEventListener("submit", (e) => {
     toast(`<b>${escapeHtml(entry.nom)}</b>, votre inscription a été mise à jour. Merci !`);
   } else {
     rsvps.push(entry);
-    toast(`Merci, <b>${escapeHtml(entry.nom)}</b> — on vous attend le vendredi 29 mai.`);
+    toast(`Merci, <b>${escapeHtml(entry.nom)}</b> — on vous attend le vendredi 28 mai 2027.`);
   }
   save(STORE_RSVP, rsvps);
   renderRsvps();
