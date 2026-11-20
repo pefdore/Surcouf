@@ -28,15 +28,22 @@ def test_workflow_name_matches_registration(registered):
     assert definition.name == "surcouf-neon-sql"
 
 
-def test_input_output_models():
-    from worker.workflows.neon_sql import SqlInput, SqlOutput
+def test_call_models():
+    from worker.workflows.neon_sql import NeonCall, NeonCallsInput, NeonCallsOutput
 
-    inp = SqlInput(statements=["SELECT 1", "CREATE TABLE t (id int)"])
-    assert inp.statements[0] == "SELECT 1"
-    out = SqlOutput(results=[{"rows": [[1]]}])
-    assert out.results[0]["rows"][0][0] == 1
+    inp = NeonCallsInput(
+        calls=[
+            {"tool": "list_projects", "arguments": {"search": "Rennes"}},
+            {"tool": "run_sql_transaction", "arguments": {"sql_statements": ["SELECT 1"], "project_id": "p1"}},
+        ]
+    )
+    assert inp.calls[0].arguments == {"search": "Rennes"}
+    out = NeonCallsOutput(results=[{"data": []}])
+    assert out.results == [{"data": []}]
     with pytest.raises(pydantic.ValidationError):
-        SqlInput()
+        NeonCallsInput()
+    with pytest.raises(pydantic.ValidationError):
+        NeonCall(tool="")
 
 
 def test_activity_defined():
@@ -49,3 +56,13 @@ def test_connector_slot():
     from worker.workflows.neon_sql import neon
 
     assert neon.connector_name == "neon_a06a"
+
+
+def test_allowlist():
+    from worker.workflows.neon_sql import ALLOWED_TOOLS
+
+    assert "list_projects" in ALLOWED_TOOLS
+    assert "run_sql" in ALLOWED_TOOLS
+    assert "run_sql_transaction" in ALLOWED_TOOLS
+    assert "get_connection_string" in ALLOWED_TOOLS
+    assert "delete_project" not in ALLOWED_TOOLS
