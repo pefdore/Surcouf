@@ -1,0 +1,14 @@
+FROM python:3.12-slim
+
+ENV PYTHONUNBUFFERED=1 \
+    PYTHONPATH=/app/apps/worker/src \
+    PIP_NO_CACHE_DIR=1
+
+WORKDIR /app
+
+COPY pyproject.toml ./
+RUN pip install --no-cache-dir "mistralai-workflows[mistralai]>=3.10,<4"
+
+COPY apps/ ./apps/
+
+CMD ["python", "-m", "worker.entrypoints.worker"]

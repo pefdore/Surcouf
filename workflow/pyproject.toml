@@ -1,0 +1,8 @@
+[project]
+name = "surcouf-voisins-workflows"
+version = "0.1.0"
+description = "Workflow d'administration base Neon pour la Journée des Voisins — rue Surcouf"
+requires-python = ">=3.12"
+dependencies = [
+    "mistralai-workflows[mistralai]>=3.10,<4",
+]
