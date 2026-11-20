@@ -27,6 +27,13 @@ class NeonCall(pydantic.BaseModel):
     tool: str
     arguments: dict[str, Any] = pydantic.Field(default_factory=dict)
 
+    @pydantic.field_validator("tool")
+    @classmethod
+    def check_tool(cls, v: str) -> str:
+        if v not in ALLOWED_TOOLS:
+            raise ValueError(f"tool not allowed: {v}")
+        return v
+
 
 class NeonCallsInput(pydantic.BaseModel):
     calls: list[NeonCall]
