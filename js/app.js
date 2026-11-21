@@ -72,8 +72,8 @@ const DB = {
 
   norm(nom) { return nom.trim().toLowerCase(); },
 
-  momentToCode(m) { return m === "Après-midi" ? "aprem" : m === "Apéro" ? "apero" : m === "Banquet" ? "banquet" : ""; },
-  momentFromCode(c) { return c === "aprem" ? "Après-midi" : c === "apero" ? "Apéro" : c === "banquet" ? "Banquet" : c; },
+  momentToCode(m) { return m === "Après-midi" ? "aprem" : m === "Apéro" ? "apero" : (m === "Banquet" || m === "Barbecue") ? "banquet" : ""; },
+  momentFromCode(c) { return c === "aprem" ? "Après-midi" : c === "apero" ? "Apéro" : c === "banquet" ? "Barbecue" : c; },
 
   async listRsvps() {
     if (this.mode === "neon") {
@@ -172,7 +172,7 @@ const TASKS = [
   { title: "Chasse au trésor « Le Renard »", desc: "Préparer les indices, cacher le trésor et encadrer les équipes d'enfants." },
   { title: "Bar de l'apéro", desc: "Table des boissons : kir breton, softs, glaçons, gobelets réutilisables." },
   { title: "Sono & micro ouvert", desc: "Enceinte, micro sans fil et playlist de marine pour les chansons de marins." },
-  { title: "Musiciens", desc: "Brancher un instrument pour le concert de 21h30 et embarquer les voisins." },
+  { title: "Musiciens", desc: "Brancher un instrument pour le concert de 22h et embarquer les voisins." },
   { title: "Photos & vidéo", desc: "Shooter la photo officielle de la rue et immortaliser la journée." },
   { title: "Tri & rangement", desc: "Sacs de tri, point de propreté et grand rangement collectif à 23h." },
   { title: "Sécurité douce", desc: "Circulation aux extrémités de la rue, assistance aux personnes âgées et aux enfants." }
@@ -180,8 +180,8 @@ const TASKS = [
 
 /* Données de démo (mode localStorage) */
 const DEMO_RSVP = [
-  { nom: "Famille Le Goff · n° 12", adultes: 3, enfants: 2, moments: ["Apéro", "Banquet"], apport: "Un far breton et 4 chaises", msg: "On arrive dès l'apéro, les gamins adorent la chasse au trésor !" },
-  { nom: "Marie & Julien · n° 27", adultes: 2, enfants: 0, moments: ["Après-midi", "Apéro", "Banquet"], apport: "Kir Breton + guirlandes solaires", msg: "" },
+  { nom: "Famille Le Goff · n° 12", adultes: 3, enfants: 2, moments: ["Apéro", "Barbecue"], apport: "Un far breton et 4 chaises", msg: "On arrive dès l'apéro, les gamins adorent la chasse au trésor !" },
+  { nom: "Marie & Julien · n° 27", adultes: 2, enfants: 0, moments: ["Après-midi", "Apéro", "Barbecue"], apport: "Kir Breton + guirlandes solaires", msg: "" },
   { nom: "Yves · n° 5", adultes: 1, enfants: 0, moments: ["Apéro"], apport: "Mölkky et palets bretons", msg: "Je tiens la table de pétanque à la mêlée." }
 ];
 
